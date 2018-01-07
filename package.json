@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "PRODUCTION=true webpack"
+    "build": "PRODUCTION=true webpack",
+    "server": "node index.js"
   },
   "keywords": [],
   "author": "Adrian Juszczak <adrian@juszczak.io> (https://juszczak.io/)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
   "devDependencies": {
     "copy-webpack-plugin": "^4.3.1",
     "html-webpack-plugin": "^2.30.1",

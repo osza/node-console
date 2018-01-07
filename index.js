@@ -1,16 +1,14 @@
-var http = require('http')
+var express = require('express')
 
 var PORT = 3000;
 
-var app = http.createServer();
+var app = express();
 
-app.addListener('request', function(req, res) {
-  res.writeHead(200, {
-    'Content-Type': 'application/json',
-  });
-  res.write('{"hello": "world"}');
-  res.end();
-});
+app.get('*', function(req, res) {
+  res.json({
+    hello: 'world'
+  })
+})
 
 app.listen(PORT, function() {
   console.log('listening on port', PORT);
