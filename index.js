@@ -3,8 +3,27 @@ var proxy = require('express-http-proxy')
 var path = require('path')
 
 var PORT = 3000;
+var NOTES_URL = '/notes';
 
 var app = express();
+
+app.get(NOTES_URL, function(req, res) {
+    res.json({
+      notes: []
+    })
+});
+
+app.post(NOTES_URL, function(req, res) {
+    res.json({
+      status: 'added'
+    })
+});
+
+app.delete(NOTES_URL, function(req, res) {
+    res.json({
+      status: 'deleted'
+    })
+});
 
 var frontend;
 if (process.env['PRODUCTION']) {
