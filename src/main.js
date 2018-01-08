@@ -11,6 +11,26 @@ document.addEventListener('DOMContentLoaded', function() {
     var element = document.createElement('div')
     element.innerHTML = note;
     element.className = 'note'
+    element.addEventListener('click', function() {
+      var info = document.createElement('span');
+      info.className = 'info';
+      info.innerHTML = 'deleting…';
+      element.appendChild(info)
+      fetch('/notes', {
+          method: 'delete',
+          headers: headers,
+          body: JSON.stringify({
+            note: note
+          })
+        })
+        .then(function(res) {
+          res.json().then(function(data) {
+            if (data.deleted === note) {
+              content.removeChild(element);
+            }
+          });
+        });
+    });
     content.appendChild(element);
   }
 

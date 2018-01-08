@@ -25,10 +25,11 @@ app.get('/notes', function(req, res) {
   res.json({notes: notes});
 });
 
-app.delete(NOTES_URL, function(req, res) {
-    res.json({
-      status: 'deleted'
-    })
+app.delete('/notes', function(req, res) {
+  var note = req.body.note;
+  var index = notes.indexOf(note);
+  notes = notes.filter(function(note, i) {return i !== index});
+  res.json({deleted: note});
 });
 
 var frontend;
