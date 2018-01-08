@@ -1,22 +1,28 @@
 var express = require('express')
 var proxy = require('express-http-proxy')
 var path = require('path')
+var bodyParser = require('body-parser');
 
 var PORT = 3000;
 var NOTES_URL = '/notes';
 
 var app = express();
 
-app.get(NOTES_URL, function(req, res) {
-    res.json({
-      notes: []
-    })
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+var notes = [];
+
+app.post('/notes', function(req, res) {
+  var note = req.body.note;
+  notes.push(note);
+  res.json({value: note});
 });
 
-app.post(NOTES_URL, function(req, res) {
-    res.json({
-      status: 'added'
-    })
+app.get('/notes', function(req, res) {
+  res.json({notes: notes});
 });
 
 app.delete(NOTES_URL, function(req, res) {
