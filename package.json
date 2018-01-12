@@ -7,7 +7,9 @@
     "dev": "run-p dev:client dev:server",
     "dev:client": "webpack-dev-server",
     "dev:server": "nodemon index.js",
-    "build": "PRODUCTION=true webpack"
+    "build": "PRODUCTION=true webpack",
+    "start": "node index.js",
+    "deploy": "now deploy --env PRODUCTION=true --npm --public"
   },
   "keywords": [],
   "author": "Adrian Juszczak <adrian@juszczak.io> (https://juszczak.io/)",
