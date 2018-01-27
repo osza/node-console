@@ -11,9 +11,17 @@
     "start": "node index.js",
     "deploy": "now deploy --env PRODUCTION=true --npm --public"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsb-university/node-console.git"
+  },
   "keywords": [],
   "author": "Adrian Juszczak <adrian@juszczak.io> (https://juszczak.io/)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wsb-university/node-console/issues"
+  },
+  "homepage": "https://github.com/wsb-university/node-console#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
